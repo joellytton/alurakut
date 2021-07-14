@@ -26,12 +26,11 @@ function ProfileSidebar(propriedades) {
 export default function Home() {
   const usuarioAleatorio = 'joellytton';
   const [comunidades, setComunidades] = React.useState([{
-    id: '12802378123789378912789789123896123', 
+    id: '123456',
     title: 'Eu odeio acordar cedo',
-    image: 'https://alurakut.vercel.app/capa-comunidade-01.jpg'
+    image: 'https://pbs.twimg.com/profile_images/143696361/avatar_400x400.jpg'
   }]);
 
-  // const comunidades = ['Alurakut'];
   const pessoasFavoritas = [
     'juunegreiros',
     'omariosouto',
@@ -45,14 +44,13 @@ export default function Home() {
     <>
       <AlurakutMenu />
       <MainGrid>
-        {/* <Box style="grid-area: profileArea;"> */}
         <div className="profileArea" style={{ gridArea: 'profileArea' }}>
           <ProfileSidebar githubUser={usuarioAleatorio} />
         </div>
         <div className="welcomeArea" style={{ gridArea: 'welcomeArea' }}>
           <Box>
             <h1 className="title">
-              Bem vindo(a) 
+              Bem vindo(a)
             </h1>
 
             <OrkutNostalgicIconSet />
@@ -61,19 +59,16 @@ export default function Home() {
           <Box>
             <h2 className="subTitle">O que você deseja fazer?</h2>
             <form onSubmit={function handleCriaComunidade(e) {
-                e.preventDefault();
-                const dadosDoForm = new FormData(e.target);
+              e.preventDefault();
+              const dadosDoForm = new FormData(e.target);
 
-                console.log('Campo: ', dadosDoForm.get('title'));
-                console.log('Campo: ', dadosDoForm.get('image'));
-
-                const comunidade = {
-                  id: new Date().toISOString(),
-                  title: dadosDoForm.get('title'),
-                  image: dadosDoForm.get('image'),
-                }
-                const comunidadesAtualizadas = [...comunidades, comunidade];
-                setComunidades(comunidadesAtualizadas)
+              const comunidade = {
+                id: new Date().toISOString(),
+                title: dadosDoForm.get('title'),
+                image: dadosDoForm.get('image'),
+              }
+              const comunidadesAtualizadas = [...comunidades, comunidade];
+              setComunidades(comunidadesAtualizadas)
             }}>
               <div>
                 <input
@@ -81,7 +76,7 @@ export default function Home() {
                   name="title"
                   aria-label="Qual vai ser o nome da sua comunidade?"
                   type="text"
-                  />
+                />
               </div>
               <div>
                 <input
@@ -103,10 +98,10 @@ export default function Home() {
               Comunidades ({comunidades.length})
             </h2>
             <ul>
-              {comunidades.map((itemAtual) => {
+              {comunidades.slice(0, 6).map((itemAtual) => {
                 return (
                   <li key={itemAtual.id}>
-                    <a href={`/users/${itemAtual.title}`}>
+                    <a href={`https://www.linkedin.com/in/joellytton-mendon%C3%A7a-a46471b4/`} target="_blank">
                       <img src={itemAtual.image} />
                       <span>{itemAtual.title}</span>
                     </a>
